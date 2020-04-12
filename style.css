@@ -1,0 +1,163 @@
+/* Global Settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: bisque;
+  font-family: "Baloo Bhaina 2", cursive;
+  margin-top: 96px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Section-left */
+.section-left {
+  background: rgba(49, 35, 20, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 600px;
+  height: 640px;
+}
+
+.fa-clock {
+  margin-right: 40px;
+}
+
+.btn,
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 300px;
+}
+
+.score {
+  font-size: 2rem;
+  color: rgb(189, 122, 67);
+  margin: 0;
+  padding: 0;
+}
+
+#timer {
+  font-size: 5rem;
+}
+
+#cookie {
+  width: 300px;
+}
+
+#cookie:hover {
+  width: 310px;
+  transition: ease-out;
+  transition-duration: 10ms;
+}
+
+#cookie:active {
+  width: 290px;
+  transition: ease-out;
+  transition-duration: 10ms;
+}
+
+/* Section-right */
+.section-right {
+  background: rgba(49, 35, 20, 0.1);
+  height: 640px;
+  width: 260px;
+  margin-left: 4px;
+  /* border-left: 3px dashed rgb(149, 95, 13); */
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  flex-direction: column;
+}
+
+.log h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(149, 95, 13);
+  font-size: 1.4em;
+  text-transform: uppercase;
+  margin: 24px;
+}
+
+#clicked,
+#purchasedItem {
+  font-size: 1em !important;
+  color: rgb(112, 26, 26);
+}
+
+.fa-hand-point-up {
+  margin-right: 20px;
+}
+
+button {
+  color: rgb(100, 155, 0);
+  background: rgba(233, 165, 56, 0.2);
+  width: 84%;
+  height: 96px;
+  font-size: 1.8rem;
+  border: dashed 3px rgb(194, 161, 109);
+  margin: 6px 0 6px 0;
+}
+
+button:hover {
+  background: rgba(233, 221, 56, 0.2);
+  cursor: pointer;
+}
+
+button:disabled {
+  background: rgba(233, 97, 56, 0.2);
+  color: rgb(195, 112, 91);
+  border: dashed 3px rgb(197, 101, 74);
+  cursor: not-allowed;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  font-size: 16px;
+  visibility: hidden;
+  width: 100%;
+  background-color: rgba(83, 70, 49, 0.8);
+  color: rgb(255, 207, 118);
+  text-align: left;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px #555;
+  padding: 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.cost {
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.gain {
+  color: greenyellow;
+  font-weight: bold;
+  font-size: 20px;
+}

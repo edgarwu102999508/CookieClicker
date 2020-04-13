@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap"
       rel="stylesheet"
@@ -13,43 +12,51 @@
     <title>Cookie Clicker</title>
   </head>
   <body>
-    <div class="section-left">
-      <div class="score">
-        <h2><i class="far fa-clock"></i><span id="timer"> 00:00:00</span></h2>
-        <h3><span id="count">0</span> Cookies</h3>
+    <div class="main">
+      <div class="section-left">
+        <div class="score">
+          <div class="stopwatch">
+            <i class="far fa-clock"></i>
+            <h2 id="timer">Start</h2>
+          </div>          
+          <h3><span id="count">0</span> Cookies</h3>
+        </div>
+        <div class="btn">
+          <button id="cookieBtn" src="img/Cookie.png" alt="cookie" /></button>
+        </div>
       </div>
-      <div class="btn">
-        <img id="cookie" src="img/Cookie.png" alt="cookie" />
+      <div class="section-right">
+        <div class="log">
+          <h3>> Clicked <<span id="clicked">0</span></h3>
+          <h3>> Purchased Item <<span id="purchasedItem">0</span></h3>
+        </div>
+        <div class="items">
+          <button id="itemA" class="itemBtn tooltip">
+            <i class="far fa-hand-point-up"></i>Item A
+            <span class="tooltip-text"
+              >Cost <span class="cost"> 5 </span> cookies to get
+              <span class="gain"> 1 </span> cookie every second.</span
+            >
+          </button>
+          <button id="itemB" class="itemBtn tooltip">
+            <i class="far fa-hand-point-up"></i>Item B
+            <span class="tooltip-text"
+              >Cost <span class="cost"> 25 </span> cookies to get
+              <span class="gain"> 50 </span> cookies every second.</span
+            >
+          </button>
+          <button id="itemC" class="itemBtn tooltip">
+            <i class="far fa-hand-point-up"></i>Item C
+            <span class="tooltip-text"
+              >Cost <span class="cost"> 50 </span> cookies to get
+              <span class="gain"> 100 </span> cookies every second.</span
+            >
+          </button>
+        </div>
       </div>
     </div>
-    <div class="section-right">
-      <div class="log">
-        <h3>> Clicked <<span id="clicked">0</span></h3>
-        <h3>> Purchased Item <<span id="purchasedItem">0</span></h3>
-      </div>
-      <div class="items">
-        <button id="itemA" class="tooltip">
-          <i class="far fa-hand-point-up"></i>Item A
-          <span class="tooltip-text"
-            >Cost <span class="cost">5</span> cookies to get
-            <span class="gain">1</span> cookie every second.</span
-          >
-        </button>
-        <button id="itemB" class="tooltip">
-          <i class="far fa-hand-point-up"></i>Item B
-          <span class="tooltip-text"
-            >Cost <span class="cost">25</span> cookies to get
-            <span class="gain">50</span> cookies every second.</span
-          >
-        </button>
-        <button id="itemC" class="tooltip">
-          <i class="far fa-hand-point-up"></i>Item C
-          <span class="tooltip-text"
-            >Cost <span class="cost">50</span> cookies to get
-            <span class="gain">100</span> cookies every second.</span
-          >
-        </button>
-      </div>
+    <div class="section-bottom">
+      <i class="fas fa-chevron-right"></i><button id="reset">PLAY AGAIN</button><i class="fas fa-chevron-left"></i>
     </div>
     <script
       src="https://kit.fontawesome.com/add821fc3f.js"

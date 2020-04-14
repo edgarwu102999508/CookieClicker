@@ -207,7 +207,8 @@ body {
   justify-content: center;
 }
 
-#reset {
+#start,
+#replay {
   align-self: center;
   height: 52px;
   width: 200px;
@@ -216,9 +217,11 @@ body {
   color: blanchedalmond;
   border-radius: 50px;
   font-size: 1.5em;
+  outline: 0;
 }
 
-#reset:hover:enabled {
+#start:hover:enabled,
+#replay:hover:enabled {
   transition: ease-in-out;
   transition-duration: 100ms;
   background: rgb(235, 171, 146);
@@ -226,7 +229,8 @@ body {
   font-weight: bold;
 }
 
-#reset:disabled {
+#start:disabled,
+#replay:disabled {
   background: rgb(173, 159, 133);
   color: rgb(236, 225, 188);
 }
@@ -266,4 +270,31 @@ body {
     -webkit-transform: translateX(0.4em);
     opacity: 0.5;
   }
+}
+
+/* Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  transition-duration: 3ms;
+}
+
+.modal-content {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  box-shadow: 0px 5px 20px #57575754;
+  border-radius: 20px;
+  border: dashed 3px rgb(235, 171, 146);
+  height: 200px;
+  margin: 30% auto;
+  padding: 60px;
+  width: 50%;
 }

@@ -4,57 +4,68 @@ document.addEventListener("DOMContentLoaded", function () {
   let purchased = document.querySelector("#purchasedItem");
   let timer = document.querySelector("#timer");
   const cookieBtn = document.querySelector("#cookieBtn");
-  const restartBtn = document.querySelector("#reset");
+  const startBtn = document.querySelector("#start");
+  const replayBtn = document.querySelector("#replay");
   const itemA = document.querySelector("#itemA");
   const itemB = document.querySelector("#itemB");
   const itemC = document.querySelector("#itemC");
   const arrowRight = document.querySelector(".fa-chevron-right");
   const arrowLeft = document.querySelector(".fa-chevron-left");
+  const modal = document.querySelector("#gameModal");
   let cookiesCounter = 0;
   let clickedCounter = 0;
   let purchasedCounter = 0;
+  let interval = null;
 
   // ============== Game Settings ============== //
   // Set game time limit
   const timeSet = 1;
   // Set item cost here
   const itemACost = 5;
-  const itemBCost = 25;
-  const itemCCost = 100;
+  const itemBCost = 100;
+  const itemCCost = 200;
   // ========================================== //
 
-  // Disable Items & Elements at Start
+  // Disable Items & Elements at the Start
   itemA.setAttribute("disabled", "");
   itemB.setAttribute("disabled", "");
   itemC.setAttribute("disabled", "");
-  restartBtn.setAttribute("disabled", "");
-  arrowRight.style.display = "none";
-  arrowLeft.style.display = "none";
+  cookieBtn.setAttribute("disabled", "");
 
   // ======= Timer ======= //
   let time = timeSet * 60;
-  let countDown = setInterval(updateCountdown, 1000);
-  function updateCountdown() {
+  function stopwatch() {
     let minutes = Math.floor(time / 60);
     let seconds = time % 60;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     timer.innerHTML = `${minutes} : ${seconds} `;
-    if (time > 0) {
-      time--;
-    } else {
-      clearInterval(countDown);
-      timer.innerHTML = "Time Out";
-      timer.style.color = "rgb(255, 92, 92)";
-      // Set delay for alert popup
-      setTimeout(function () {
-        alert("Game Over");
-      }, 500);
-    }
+    time--;
+  }
+
+  // Start Game button
+  startBtn.addEventListener("click", startGame);
+  function startGame(e) {
+    interval = setInterval(stopwatch, 1000);
+    cookieBtn.removeAttribute("disabled");
+    startBtn.setAttribute("disabled", "");
+    arrowRight.style.display = "none";
+    arrowLeft.style.display = "none";
+    new Audio((src = "/audio/click.mp3")).play();
+    e.preventDefault();
+  }
+
+  // Replay Game button
+  replayBtn.addEventListener("click", replayGame);
+  function replayGame(e) {
+    location.reload();
+    modal.style.display = "none";
+    new Audio((src = "/audio/click.mp3")).play();
+    e.preventDefault();
   }
 
   // Check Cookies & Game Time every 0.1 second
-  setInterval(function () {
+  let check = function () {
     if (cookiesCounter >= 50) {
       itemB.removeAttribute("disabled");
     }
@@ -64,21 +75,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (time === 0) {
-      // Set delay for button
+      clearInterval(interval);
+      timer.innerHTML = "Time Out";
+      timer.style.color = "rgb(255, 92, 92)";
+
+      // Set delay for buttons
       setTimeout(function () {
-        restartBtn.removeAttribute("disabled");
-        arrowRight.style.display = "initial";
-        arrowLeft.style.display = "initial";
         // Disable cookie button
         cookieBtn.setAttribute("disabled", "");
-      }, 2000);
+        // Display modal
+        modal.style.display = "block";
+      }, 500);
     }
-  }, 1000 / 100);
-
-  // Replay Game button
-  restartBtn.addEventListener("click", function () {
-    location.reload();
-  });
+  };
+  setInterval(check, 1000 / 100);
 
   // Cookie button
   cookieBtn.addEventListener("click", function () {
@@ -95,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (cookiesCounter >= 100) {
       itemC.removeAttribute("disabled");
     }
+    new Audio((src = "/audio/bite.mp3")).play();
   });
 
   // ======= Items ======= //
@@ -113,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       alert("Not enough Cookies!!!");
     }
+    new Audio((src = "/audio/item.mp3")).play();
   });
 
   itemB.addEventListener("click", function () {
@@ -130,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       alert("Not enough Cookies!!!");
     }
+    new Audio((src = "/audio/item.mp3")).play();
   });
 
   itemC.addEventListener("click", function () {
@@ -147,5 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       alert("Not enough Cookies!!!");
     }
+    new Audio((src = "/audio/item.mp3")).play();
   });
 });
